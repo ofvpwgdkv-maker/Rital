@@ -1,0 +1,2584 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RITAL'S SENIOR YEAR — One year. Countless possibilities.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #16233b;
+      --navy-soft: #263859;
+      --offwhite: #f7f8fb;
+      --surface: #ffffff;
+      --surface-alt: #f1f3f8;
+      --lavender: #ebe7f7;
+      --lavender-accent: #7c69b8;
+      --gray-border: #e2e6ef;
+      --text-main: #1b2432;
+      --text-muted: #5d687a;
+      --success: #1f8a65;
+      --warning: #c97a16;
+      --danger: #c63b4b;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+      --shadow: 0 8px 24px rgba(22, 35, 59, 0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: var(--offwhite);
+      color: var(--text-main);
+      line-height: 1.65;
+      min-height: 100vh;
+    }
+
+    .app-shell {
+      display: grid;
+      grid-template-columns: 270px 1fr;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      background: var(--navy);
+      color: #ffffff;
+      padding: 24px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow-y: auto;
+    }
+
+    .brand {
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .brand-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      letter-spacing: 0.4px;
+      color: #ffffff;
+    }
+
+    .brand-sub {
+      font-size: 0.8rem;
+      color: #d6cff0;
+      font-style: italic;
+      margin-top: 2px;
+    }
+
+    .nav-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .nav-btn {
+      background: transparent;
+      border: none;
+      color: #dce2ee;
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 600;
+      padding: 10px 14px;
+      border-radius: var(--radius-md);
+      text-align: right;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.2s ease;
+    }
+
+    .nav-btn:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: #ffffff;
+    }
+
+    .nav-btn.active {
+      background: var(--lavender);
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    .sidebar-footer {
+      margin-top: auto;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    /* Main Content */
+    .main-content {
+      padding: 24px 28px 60px;
+      max-width: 1380px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .topbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      background: var(--surface);
+      border: 1px solid var(--gray-border);
+      border-radius: var(--radius-lg);
+      padding: 16px 22px;
+      margin-bottom: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .topbar-right h1 {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    .topbar-right p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .topbar-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .btn {
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--gray-border);
+      background: var(--surface);
+      color: var(--navy);
+      cursor: pointer;
+      transition: all 0.18s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn:hover {
+      background: var(--surface-alt);
+    }
+
+    .btn-primary {
+      background: var(--navy);
+      color: #ffffff;
+      border-color: var(--navy);
+    }
+
+    .btn-primary:hover {
+      background: var(--navy-soft);
+    }
+
+    .btn-lavender {
+      background: var(--lavender);
+      color: var(--navy);
+      border-color: #d6cef0;
+    }
+
+    .btn-danger {
+      background: #fff3f4;
+      color: var(--danger);
+      border-color: #f3c6cc;
+    }
+
+    .btn-sm {
+      padding: 5px 10px;
+      font-size: 0.78rem;
+    }
+
+    .section-view {
+      display: none;
+      animation: fadeIn 0.2s ease;
+    }
+
+    .section-view.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--gray-border);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      box-shadow: var(--shadow);
+      margin-bottom: 18px;
+    }
+
+    .card-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--gray-border);
+    }
+
+    .card-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--gray-border);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .stat-label {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .stat-value {
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin: 4px 0;
+    }
+
+    .stat-sub {
+      font-size: 0.78rem;
+      color: var(--lavender-accent);
+      font-weight: 600;
+    }
+
+    .progress-wrap {
+      background: var(--surface-alt);
+      border-radius: 999px;
+      height: 10px;
+      overflow: hidden;
+      margin-top: 8px;
+    }
+
+    .progress-bar {
+      height: 100%;
+      background: linear-gradient(90deg, var(--navy), var(--lavender-accent));
+      border-radius: 999px;
+      transition: width 0.3s ease;
+    }
+
+    /* Forms & Tables */
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .field label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    input, select, textarea {
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.88rem;
+      padding: 8px 11px;
+      border: 1px solid var(--gray-border);
+      border-radius: var(--radius-sm);
+      background: #ffffff;
+      color: var(--text-main);
+      width: 100%;
+    }
+
+    textarea {
+      min-height: 76px;
+      resize: vertical;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.86rem;
+    }
+
+    th, td {
+      border: 1px solid var(--gray-border);
+      padding: 9px 10px;
+      text-align: right;
+      vertical-align: middle;
+    }
+
+    th {
+      background: var(--surface-alt);
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .badge-qudrat { background: #e6eefc; color: #1d4ed8; }
+    .badge-tahseeli { background: #e3f7ef; color: #136f4f; }
+    .badge-holiday { background: #f3ecfc; color: #6b3fa0; }
+    .badge-exam { background: #fdeaea; color: #b4232c; }
+    .badge-custom { background: #fff4e2; color: #9c5700; }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .tab-btn {
+      font-family: 'Cairo', sans-serif;
+      font-size: 0.86rem;
+      font-weight: 700;
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--gray-border);
+      background: var(--surface);
+      color: var(--text-muted);
+      cursor: pointer;
+    }
+
+    .tab-btn.active {
+      background: var(--navy);
+      color: #ffffff;
+      border-color: var(--navy);
+    }
+
+    /* Calendar */
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .cal-day-head {
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      padding: 6px;
+    }
+
+    .cal-cell {
+      min-height: 92px;
+      border: 1px solid var(--gray-border);
+      border-radius: var(--radius-sm);
+      padding: 6px;
+      background: #ffffff;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 0.78rem;
+    }
+
+    .cal-cell:hover {
+      border-color: var(--lavender-accent);
+    }
+
+    .cal-cell.other-month {
+      background: #f9fafc;
+      color: #9aa4b5;
+    }
+
+    .cal-cell.today {
+      border: 2px solid var(--navy);
+    }
+
+    .cal-num {
+      font-weight: 800;
+      font-size: 0.85rem;
+    }
+
+    .cal-event-dot {
+      padding: 2px 5px;
+      border-radius: 5px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Whiteboard & Focus */
+    .board-wrap {
+      border: 1px solid var(--gray-border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+    canvas.whiteboard {
+      display: block;
+      width: 100%;
+      height: 380px;
+      touch-action: none;
+      cursor: crosshair;
+      background: #ffffff;
+    }
+
+    .focus-box {
+      text-align: center;
+      padding: 28px 18px;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, #f8f7fc, #eef2f9);
+      border: 1px solid var(--gray-border);
+    }
+
+    .focus-timer {
+      font-size: 3.2rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin: 12px 0;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .focus-fullscreen {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: var(--navy);
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      padding: 24px;
+    }
+
+    .focus-fullscreen .focus-timer {
+      color: var(--lavender);
+      font-size: 4.5rem;
+    }
+
+    .task-item {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 12px;
+      border: 1px solid var(--gray-border);
+      border-radius: var(--radius-sm);
+      margin-bottom: 8px;
+      background: #ffffff;
+    }
+
+    .task-item.done span.task-title {
+      text-decoration: line-through;
+      color: var(--text-muted);
+    }
+
+    .quote-banner {
+      background: var(--lavender);
+      color: var(--navy);
+      padding: 12px 16px;
+      border-radius: var(--radius-md);
+      font-weight: 700;
+      font-size: 0.92rem;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    @media (max-width: 960px) {
+      .app-shell {
+        grid-template-columns: 1fr;
+      }
+      .sidebar {
+        position: static;
+        height: auto;
+      }
+      .grid-4, .grid-3, .grid-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-title">RITAL'S SENIOR YEAR</div>
+        <div class="brand-sub">One year. Countless possibilities.</div>
+      </div>
+
+      <nav class="nav-list" id="navList">
+        <button class="nav-btn active" data-section="dashboard">🏠 الرئيسية (My Dashboard)</button>
+        <button class="nav-btn" data-section="qudrat">🧠 القدرات (Qudrat)</button>
+        <button class="nav-btn" data-section="tahseeli">🔬 التحصيلي (Tahseeli)</button>
+        <button class="nav-btn" data-section="planner">📅 الجدول ومتتبع المذاكرة</button>
+        <button class="nav-btn" data-section="calendar">🗓️ التقويم والمواعيد</button>
+        <button class="nav-btn" data-section="vault">📒 الملاحظات والأخطاء والملفات</button>
+        <button class="nav-btn" data-section="whiteboard">✏️ السبورة البيضاء</button>
+        <button class="nav-btn" data-section="focus">⏳ غرفة التركيز (Focus Room)</button>
+        <button class="nav-btn" data-section="future">🎓 الجامعات والرغبات (Future)</button>
+        <button class="nav-btn" data-section="archive">🏆 أرشيف السنة (Year Archive)</button>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="btn btn-lavender btn-sm" onclick="exportData()">⬇️ تصدير نسخة احتياطية</button>
+        <button class="btn btn-sm" onclick="document.getElementById('importFileInput').click()">⬆️ استيراد بيانات</button>
+        <input type="file" id="importFileInput" accept=".json" style="display:none" onchange="importData(event)" />
+        <button class="btn btn-danger btn-sm" onclick="resetAllConfirm()">🔄 إعادة ضبط المصنع</button>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="main-content">
+      <header class="topbar">
+        <div class="topbar-right">
+          <h1 id="pageTitle">RITAL'S SENIOR YEAR</h1>
+          <p id="todayInfo">جاري تحميل التاريخ...</p>
+        </div>
+        <div class="topbar-actions">
+          <button class="btn btn-primary" onclick="switchSection('focus')">🚀 ابدئي مذاكرتك</button>
+          <button class="btn btn-lavender" onclick="openFreezeModal()">❄️ تجميد يوم مذاكرة</button>
+        </div>
+      </header>
+
+      <div class="quote-banner">
+        <span id="dailyQuote">السنة الأخيرة، والنسخة اللي أعمل عليها من نفسي ✨</span>
+        <button class="btn btn-sm" onclick="nextQuote()">عبارة أخرى</button>
+      </div>
+
+      <!-- 1. DASHBOARD -->
+      <section id="sec-dashboard" class="section-view active">
+        <div class="grid-4">
+          <div class="stat-card">
+            <div class="stat-label">نهاية السنة (1 يوليو 2027)</div>
+            <div class="stat-value" id="cdEndYear">-- يوم</div>
+            <div class="stat-sub">آخر يوم دراسي في الثانوي</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">بداية التحصيلي (9 يناير 2027)</div>
+            <div class="stat-value" id="cdTahseeliStart">-- يوم</div>
+            <div class="stat-sub">تسجيل التحصيلي: 14 أبريل 2027</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">القدرات المتوقع (حسب التأسيس)</div>
+            <div class="stat-value" id="cdQudratEst">-- يوم</div>
+            <div class="stat-sub" id="qudratEstDateLabel">مدة التأسيس: 30 يوم</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">ساعات المذاكرة هذا الأسبوع</div>
+            <div class="stat-value" id="weekStudyHours">0.0 س</div>
+            <div class="stat-sub" id="weekCommitmentLabel">أيام الالتزام: 0</div>
+          </div>
+        </div>
+
+        <div class="grid-3">
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">🎯 مؤشر إنجاز القدرات</span>
+              <span id="qudratProgressText" class="badge badge-qudrat">0%</span>
+            </div>
+            <p style="font-size:0.85rem;color:var(--text-muted)">الهدف: 100% — يشمل إتقان الدروس ومهام التدريب</p>
+            <div class="progress-wrap"><div class="progress-bar" id="qudratProgressBar" style="width:0%"></div></div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">📚 مؤشر إنجاز التحصيلي</span>
+              <span id="tahseeliProgressText" class="badge badge-tahseeli">0%</span>
+            </div>
+            <p style="font-size:0.85rem;color:var(--text-muted)">الهدف: 100% — يرتفع مع تحديث حالة وإتقان الدروس</p>
+            <div class="progress-wrap"><div class="progress-bar" id="tahseeliProgressBar" style="width:0%"></div></div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">📈 هدف اليوم التلقائي</span>
+              <span id="todayGoalBadge" class="badge badge-custom">اليوم</span>
+            </div>
+            <p id="todayGoalRuleText" style="font-size:0.88rem;font-weight:600;color:var(--navy)"></p>
+            <p id="frozenDaysInfo" style="font-size:0.8rem;color:var(--text-muted);margin-top:6px"></p>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">✅ مهام اليوم</span>
+              <button class="btn btn-sm btn-primary" onclick="switchSection('planner')">إدارة الجدول</button>
+            </div>
+            <div id="dashboardTodayTasks"></div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">📝 تسجيل يومك (Daily Check-in)</span>
+            </div>
+            <div class="field" style="margin-bottom:10px">
+              <label>كيف كان مستوى إنجازك وتركيزك اليوم؟</label>
+              <select id="checkinMood">
+                <option value="ممتاز وملتزمة">ممتاز وملتزمة 🌟</option>
+                <option value="جيد جداً">جيد جداً 💪</option>
+                <option value="متوسط مع ضغط">متوسط مع ضغط 📚</option>
+                <option value="مضغوطة جداً / محتاجة راحة">مضغوطة جداً / محتاجة راحة 🌿</option>
+              </select>
+            </div>
+            <div class="field" style="margin-bottom:10px">
+              <label>ملاحظة سريعة أو تفريغ أفكار (Brain Dump)</label>
+              <textarea id="checkinNote" placeholder="اكتبي أي فكرة أو شيء شاغل بالك أو تذكير لليوم التالي..."></textarea>
+            </div>
+            <button class="btn btn-primary" onclick="saveDailyCheckin()">حفظ تسجيل اليوم</button>
+            <div id="latestCheckinView" style="margin-top:12px;font-size:0.84rem;color:var(--text-muted)"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. QUDRAT -->
+      <section id="sec-qudrat" class="section-view">
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">⚙️ إعدادات التأسيس والأهداف اليومية</span>
+          </div>
+          <div class="form-grid">
+            <div class="field">
+              <label>مدة التأسيس (بالأيام) — الحالي: شهر (30)</label>
+              <input type="number" id="foundationDaysInput" min="1" max="365" onchange="updateFoundationDays(this.value)" />
+            </div>
+            <div class="field">
+              <label>حالة التأسيس</label>
+              <select id="foundationCompletedSelect" onchange="updateFoundationStatus(this.value)">
+                <option value="false">جاري التأسيس حاليًا</option>
+                <option value="true">أنهيت التأسيس (تفعيل التدريب الكامل)</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>هدف وسط الأسبوع (أحد - أربعاء)</label>
+              <input type="text" value="40 سؤال كمي + 15 قسم لفظي" readonly />
+            </div>
+            <div class="field">
+              <label>هدف الخميس والجمعة</label>
+              <input type="text" value="80 سؤال كمي + 20 قسم لفظي" readonly />
+            </div>
+            <div class="field">
+              <label>هدف يوم السبت</label>
+              <input type="text" value="مراجعة فقط / شيء خفيف" readonly />
+            </div>
+          </div>
+        </div>
+
+        <div class="tabs">
+          <button class="tab-btn active" onclick="switchQudratTab('quant', this)">📐 الكمي</button>
+          <button class="tab-btn" onclick="switchQudratTab('verbal', this)">📖 اللفظي</button>
+          <button class="tab-btn" onclick="switchQudratTab('golden', this)">✨ أفكار المسائل الذهبية</button>
+          <button class="tab-btn" onclick="switchQudratTab('savedQ', this)">🔖 الأسئلة المحفوظة</button>
+        </div>
+
+        <div id="qtab-quant" class="card">
+          <div class="card-header">
+            <span class="card-title">دروس وأبواب الكمي (التأسيس، المنجزة، التي لم تبدئي بها، مستوى الإتقان)</span>
+          </div>
+          <div class="form-grid">
+            <div class="field">
+              <label>اسم الدرس أو الباب</label>
+              <input type="text" id="qLessonName" placeholder="مثال: النسبة والتناسب" />
+            </div>
+            <div class="field">
+              <label>التصنيف</label>
+              <select id="qLessonCategory">
+                <option value="التأسيس">التأسيس</option>
+                <option value="بنك الأسئلة">بنك الأسئلة</option>
+                <option value="أسئلة تحتاج إعادة">أسئلة تحتاج إعادة</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>الحالة</label>
+              <select id="qLessonStatus">
+                <option value="لم أبدأ">لم أبدأ</option>
+                <option value="أدرس حاليًا">أدرس حاليًا</option>
+                <option value="يحتاج مراجعة">يحتاج مراجعة</option>
+                <option value="أتقنته">أتقنته</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>مستوى الإتقان</label>
+              <select id="qLessonMastery">
+                <option value="يحتاج مراجعة">يحتاج مراجعة</option>
+                <option value="متقن">متقن</option>
+                <option value="ضعيف">ضعيف</option>
+              </select>
+            </div>
+          </div>
+          <button class="btn btn-primary" onclick="addQudratLesson('quant')">+ إضافة درس كمي</button>
+          <div style="overflow-x:auto;margin-top:14px">
+            <table>
+              <thead>
+                <tr>
+                  <th>الدرس / الباب</th>
+                  <th>التصنيف</th>
+                  <th>الحالة</th>
+                  <th>الإتقان</th>
+                  <th>تحكم</th>
+                </tr>
+              </thead>
+              <tbody id="quantLessonsBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div id="qtab-verbal" class="card" style="display:none">
+          <div class="card-header">
+            <span class="card-title">أقسام اللفظي (التناظر، إكمال الجمل، الخطأ السياقي، استيعاب المقروء، المفردات، الملفات والتدريبات)</span>
+          </div>
+          <div class="form-grid">
+            <div class="field">
+              <label>اسم الدرس أو التدريب</label>
+              <input type="text" id="vLessonName" placeholder="مثال: تناظر لفظي - نموذج 1" />
+            </div>
+            <div class="field">
+              <label>القسم</label>
+              <select id="vLessonCategory">
+                <option value="التناظر اللفظي">التناظر اللفظي</option>
+                <option value="إكمال الجمل">إكمال الجمل</option>
+                <option value="الخطأ السياقي">الخطأ السياقي</option>
+                <option value="استيعاب المقروء">استيعاب المقروء</option>
+                <option value="المفردات">المفردات</option>
+                <option value="الملفات والتدريبات">الملفات والتدريبات</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>الحالة</label>
+              <select id="vLessonStatus">
+                <option value="لم أبدأ">لم أبدأ</option>
+                <option value="أدرس حاليًا">أدرس حاليًا</option>
+                <option value="يحتاج مراجعة">يحتاج مراجعة</option>
+                <option value="أتقنته">أتقنته</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>مستوى الإتقان</label>
+              <select id="vLessonMastery">
+                <option value="يحتاج مراجعة">يحتاج مراجعة</option>
+                <option value="متقن">متقن</option>
+                <option value="ضعيف">ضعيف</option>
+              </select>
+            </div>
+          </div>
+          <button class="btn btn-primary" onclick="addQudratLesson('verbal')">+ إضافة درس لفظي</button>
+          <div style="overflow-x:auto;margin-top:14px">
+            <table>
+              <thead>
+                <tr>
+                  <th>الدرس / التدريب</th>
+                  <th>القسم</th>
+                  <th>الحالة</th>
+                  <th>الإتقان</th>
+                  <th>تحكم</th>
+                </tr>
+              </thead>
+              <tbody id="verbalLessonsBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div id="qtab-golden" class="card" style="display:none">
+          <div class="card-header">
+            <span class="card-title">✨ أفكار المسائل الذهبية</span>
+          </div>
+          <div class="form-grid">
+            <div class="field">
+              <label>عنوان الفكرة / المسألة</label>
+              <input type="text" id="goldenTitle" placeholder="مثال: خدعة المقارنة في الأسس" />
+            </div>
+            <div class="field">
+              <label>المسار</label>
+              <select id="goldenTrack">
+                <option value="كمي">كمي</option>
+                <option value="لفظي">لفظي</option>
+                <option value="تحصيلي">تحصيلي</option>
+              </select>
+            </div>
+          </div>
+          <div class="field" style="margin-bottom:10px">
+            <label>شرح الفكرة الذهبية والطريقة السريعة للحل</label>
+            <textarea id="goldenDesc" placeholder="اكتبي الفكرة والقاعدة المختصرة..."></textarea>
+          </div>
+          <button class="btn btn-primary" onclick="addGoldenIdea()">+ حفظ فكرة ذهبية</button>
+          <div id="goldenList" style="margin-top:14px"></div>
+        </div>
+
+        <div id="qtab-savedQ" class="card" style="display:none">
+          <div class="card-header">
+            <span class="card-title">🔖 الأسئلة المحفوظة للرجوع لها</span>
+          </div>
+          <div class="form-grid">
+            <div class="field">
+              <label>رقم أو عنوان السؤال</label>
+              <input type="text" id="savedQTitle" placeholder="مثال: سؤال هندسة المثلثات" />
+            </div>
+            <div class="field">
+              <label>القسم</label>
+              <input type="text" id="savedQSection" placeholder="كمي / لفظي / فيزياء..." />
+            </div>
+          </div>
+          <div class="field" style="margin-bottom:10px">
+            <label>نص السؤال أو الملاحظة</label>
+            <textarea id="savedQNote" placeholder="اكتبي السؤال أو الفكرة اللي تبغين ترجعين لها..."></textarea>
+          </div>
+          <button class="btn btn-primary" onclick="addSavedQuestion()">+ حفظ السؤال</button>
+          <div id="savedQList" style="margin-top:14px"></div>
+        </div>
+      </section>
+
+      <!-- 3. TAHSEELI -->
+      <section id="sec-tahseeli" class="section-view">
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">🔬 قسم التحصيلي — تحكم كامل خطوة بخطوة (بداية الخطة: 9 يناير 2027)</span>
+            <span id="tahseeliOverallBadge" class="badge badge-tahseeli">الإنجاز: 0%</span>
+          </div>
+          <div class="tabs" id="tahseeliSubjectTabs">
+            <button class="tab-btn active" data-subj="biology" onclick="selectTahseeliSubject('biology', this)">🧬 الأحياء</button>
+            <button class="tab-btn" data-subj="chemistry" onclick="selectTahseeliSubject('chemistry', this)">⚗️ الكيمياء</button>
+            <button class="tab-btn" data-subj="physics" onclick="selectTahseeliSubject('physics', this)">⚡ الفيزياء</button>
+            <button class="tab-btn" data-subj="math" onclick="selectTahseeliSubject('math', this)">📐 الرياضيات</button>
+          </div>
+
+          <div id="tahseeliSubjectContent"></div>
+        </div>
+      </section>
+
+      <!-- 4. PLANNER & STUDY TRACKER -->
+      <section id="sec-planner" class="section-view">
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">📅 الجدول الأسبوعي المرن (مع إمكانية تقديم المهام لليوم الحالي)</span>
+          </div>
+          <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:12px">
+            إذا أنجزتِ مهمة مجدولة ليوم آخر (مثل إنجاز 40 سؤال يوم السبت وهي مجدولة للأحد)، اضغطي <strong>"تقديم لليوم"</strong> لتُحسب ضمن جدول وسجل اليوم الفعلي فورًا بدون أي تعقيد.
+          </p>
+          <div class="form-grid">
+            <div class="field">
+              <label>عنوان المهمة</label>
+              <input type="text" id="taskTitleInput" placeholder="مثال: حل 40 سؤال كمي" />
+            </div>
+            <div class="field">
+              <label>اليوم المجدول</label>
+              <select id="taskDayInput">
+                <option value="الأحد">الأحد</option>
+                <option value="الاثنين">الاثنين</option>
+                <option value="الثلاثاء">الثلاثاء</option>
+                <option value="الأربعاء">الأربعاء</option>
+                <option value="الخميس">الخميس</option>
+                <option value="الجمعة">الجمعة</option>
+                <option value="السبت">السبت</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>المرحلة / النوع</label>
+              <select id="taskStageInput">
+                <option value="تأسيس">تأسيس</option>
+                <option value="تدريب">تدريب</option>
+                <option value="تحصيلي">تحصيلي</option>
+                <option value="مراجعة">مراجعة</option>
+              </select>
+            </div>
+          </div>
+          <button class="btn btn-primary" onclick="addPlannerTask()">+ إضافة مهمة للجدول</button>
+          <div id="plannerTasksList" style="margin-top:16px"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">⏱️ متتبع جلسات المذاكرة (Study Tracker)</span>
+          </div>
+          <div class="form-grid">
+            <div class="field">
+              <label>المادة</label>
+              <select id="sessSubject">
+                <option value="قدرات">قدرات</option>
+                <option value="تحصيلي">تحصيلي</option>
+                <option value="مدرسة">مدرسة</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>القسم</label>
+              <input type="text" id="sessSection" placeholder="كمي / لفظي / أحياء / كيمياء..." />
+            </div>
+            <div class="field">
+              <label>اسم الدرس</label>
+              <input type="text" id="sessLesson" placeholder="مثال: النسبة المئوية" />
+            </div>
+            <div class="field">
+              <label>المدة (بالدقائق)</label>
+              <input type="number" id="sessDuration" min="1" value="45" />
+            </div>
+            <div class="field">
+              <label>عدد الأسئلة</label>
+              <input type="number" id="sessQuestions" min="0" value="40" />
+            </div>
+            <div class="field">
+              <label>الإجابات الصحيحة</label>
+              <input type="number" id="sessCorrect" min="0" value="35" />
+            </div>
+            <div class="field">
+              <label>مستوى التركيز</label>
+              <select id="sessFocus">
+                <option value="عالي جداً">عالي جداً</option>
+                <option value="جيد">جيد</option>
+                <option value="متوسط">متوسط</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>ملاحظات الجلسة</label>
+              <input type="text" id="sessNotes" placeholder="ملاحظة مختصرة..." />
+            </div>
+          </div>
+          <button class="btn btn-primary" onclick="addStudySession()">+ حفظ جلسة مذاكرة</button>
+
+          <div class="grid-4" style="margin-top:16px">
+            <div class="stat-card">
+              <div class="stat-label">إجمالي ساعات المذاكرة</div>
+              <div class="stat-value" id="totalStudyHoursStat">0.0 س</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">إجمالي الأسئلة المحلولة</div>
+              <div class="stat-value" id="totalQuestionsStat">0</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">أيام الالتزام</div>
+              <div class="stat-value" id="commitmentDaysStat">0</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">أكثر مادة أخذت وقتك</div>
+              <div class="stat-value" id="topSubjectStat" style="font-size:1.1rem">--</div>
+            </div>
+          </div>
+
+          <div style="overflow-x:auto">
+            <table>
+              <thead>
+                <tr>
+                  <th>التاريخ</th>
+                  <th>المادة</th>
+                  <th>القسم</th>
+                  <th>الدرس</th>
+                  <th>المدة</th>
+                  <th>الأسئلة (صحيح/الكل)</th>
+                  <th>التركيز</th>
+                  <th>ملاحظات</th>
+                  <th>حذف</th>
+                </tr>
+              </thead>
+              <tbody id="sessionsTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. CALENDAR & EVENTS -->
+      <section id="sec-calendar" class="section-view">
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">🗓️ التقويم الميلادي ومواعيد السنة الدراسية</span>
+            <div style="display:flex;gap:8px;align-items:center">
+              <button class="btn btn-sm" onclick="changeCalMonth(-1)">◀ الشهر السابق</button>
+              <strong id="calMonthLabel" style="min-width:130px;text-align:center"></strong>
+              <button class="btn btn-sm" onclick="changeCalMonth(1)">الشهر التالي ▶</button>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px">
+            <span class="badge badge-tahseeli">تحصيلي (أخضر)</span>
+            <span class="badge badge-holiday">إجازات / رمضان / عيد (بنفسجي)</span>
+            <span class="badge badge-exam">اختبارات نهائية ونهاية السنة (أحمر)</span>
+            <span class="badge badge-custom">مواعيدك المضافة (برتقالي)</span>
+          </div>
+
+          <div class="calendar-grid" id="calendarGrid"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">➕ إضافة موعد أو ملاحظة في التقويم</span>
+          </div>
+          <div class="form-grid">
+            <div class="field">
+              <label>عنوان الموعد / الملاحظة</label>
+              <input type="text" id="evTitle" placeholder="مثال: موعد اختبار قدرات محجوز" />
+            </div>
+            <div class="field">
+              <label>تاريخ البداية (ميلادي)</label>
+              <input type="date" id="evStart" />
+            </div>
+            <div class="field">
+              <label>تاريخ النهاية (اختياري)</label>
+              <input type="date" id="evEnd" />
+            </div>
+            <div class="field">
+              <label>اللون / التصنيف</label>
+              <select id="evType">
+                <option value="tahseeli">تحصيلي</option>
+                <option value="holiday">إجازة</option>
+                <option value="exam">اختبارات نهائية / سنة</option>
+                <option value="custom">موعد خاص بي</option>
+              </select>
+            </div>
+          </div>
+          <button class="btn btn-primary" onclick="addCalendarEvent()">+ إضافة للتقويم</button>
+
+          <div style="overflow-x:auto;margin-top:16px">
+            <table>
+              <thead>
+                <tr>
+                  <th>الموعد</th>
+                  <th>من</th>
+                  <th>إلى</th>
+                  <th>التصنيف</th>
+                  <th>تحكم</th>
+                </tr>
+              </thead>
+              <tbody id="eventsTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. VAULT: ERRORS, REVIEW, FILES, NOTES -->
+      <section id="sec-vault" class="section-view">
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">❌ سجل الأخطاء ومراجعة الأخطاء (مع إرفاق صورة)</span>
+            <button class="btn btn-lavender btn-sm" onclick="toggleReviewOnly()">فلترة: يحتاج مراجعة فقط</button>
+          </div>
+          <div class="form-grid">
+            <div class="field">
+              <label>السؤال</label>
+              <input type="text" id="errQuestion" placeholder="مثال: سؤال 12 أو فكرة الكسور" />
+            </div>
+            <div class="field">
+              <label>نوع الخطأ</label>
+              <select id="errType">
+                <option value="كمي">كمي</option>
+                <option value="لفظي">لفظي</option>
+                <option value="تحصيلي">تحصيلي</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>سبب الخطأ</label>
+              <input type="text" id="errReason" placeholder="استعجال / فهم خاطئ / قاعدة..." />
+            </div>
+            <div class="field">
+              <label>ماذا تعلمت؟</label>
+              <input type="text" id="errLearned" placeholder="التأكد من المطلوب / قراءة الجملة كاملة..." />
+            </div>
+            <div class="field">
+              <label>حالة المراجعة</label>
+              <select id="errStatus">
+                <option value="يحتاج مراجعة">يحتاج مراجعة</option>
+                <option value="أتقنته">أتقنته</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>صورة السؤال (اختياري)</label>
+              <input type="file" id="errImageInput" accept="image/*" />
+            </div>
+          </div>
+          <button class="btn btn-primary" onclick="addErrorRecord()">+ تسجيل الخطأ</button>
+
+          <div style="overflow-x:auto;margin-top:14px">
+            <table>
+              <thead>
+                <tr>
+                  <th>السؤال</th>
+                  <th>النوع</th>
+                  <th>سبب الخطأ</th>
+                  <th>ماذا تعلمت؟</th>
+                  <th>الصورة</th>
+                  <th>الحالة</th>
+                  <th>تحكم</th>
+                </tr>
+              </thead>
+              <tbody id="errorsTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">🧠 ملاحظاتي (My Brain / Study Vault)</span>
+            </div>
+            <div class="form-grid">
+              <div class="field">
+                <label>العنوان</label>
+                <input type="text" id="noteTitle" placeholder="قانون / فكرة / ملخص..." />
+              </div>
+              <div class="field">
+                <label>التصنيف</label>
+                <select id="noteCategory">
+                  <option value="قوانين">قوانين</option>
+                  <option value="معلومات أخطأت فيها">معلومات أخطأت فيها</option>
+                  <option value="أفكار مهمة">أفكار مهمة</option>
+                  <option value="ملخصات سريعة">ملخصات سريعة</option>
+                  <option value="ملاحظات المعلمين">ملاحظات المعلمين</option>
+                  <option value="روابط مفيدة">روابط مفيدة</option>
+                </select>
+              </div>
+            </div>
+            <div class="field" style="margin-bottom:10px">
+              <label>المحتوى أو الرابط</label>
+              <textarea id="noteContent" placeholder="اكتبي ملاحظتك أو الصقي الرابط..."></textarea>
+            </div>
+            <button class="btn btn-primary" onclick="addBrainNote()">+ حفظ الملاحظة</button>
+            <div class="field" style="margin-top:12px">
+              <input type="text" id="noteSearchInput" placeholder="🔍 ابحثي داخل ملاحظاتك..." oninput="renderBrainNotes()" />
+            </div>
+            <div id="brainNotesList" style="margin-top:12px"></div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">📎 ملفاتي وصوري (PDF / صور / مستندات)</span>
+            </div>
+            <div class="field" style="margin-bottom:10px">
+              <label>اسم أو وصف الملف</label>
+              <input type="text" id="fileLabelInput" placeholder="مثال: تجميعات لفظي أو ملخص فيزياء" />
+            </div>
+            <div class="field" style="margin-bottom:10px">
+              <label>اختيار ملف من الجهاز</label>
+              <input type="file" id="vaultFileInput" />
+            </div>
+            <button class="btn btn-primary" onclick="addVaultFile()">+ إضافة الملف</button>
+            <div id="vaultFilesList" style="margin-top:14px"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. WHITEBOARD -->
+      <section id="sec-whiteboard" class="section-view">
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">✏️ السبورة البيضاء للكتابة والحل</span>
+            <div style="display:flex;flex-wrap:wrap;gap:8px;align-items:center">
+              <label style="font-size:0.82rem;font-weight:700">اللون:</label>
+              <input type="color" id="wbColor" value="#16233b" style="width:44px;height:32px;padding:2px" />
+              <label style="font-size:0.82rem;font-weight:700">السمك:</label>
+              <input type="range" id="wbSize" min="1" max="14" value="3" style="width:90px" />
+              <button class="btn btn-sm" onclick="clearWhiteboard()">مسح السبورة</button>
+              <button class="btn btn-sm btn-lavender" onclick="saveWhiteboardToArchive()">حفظ كصورة في الأرشيف</button>
+            </div>
+          </div>
+          <div class="board-wrap">
+            <canvas id="whiteboardCanvas" class="whiteboard" width="1000" height="380"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8. FOCUS ROOM -->
+      <section id="sec-focus" class="section-view">
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">⏳ غرفة التركيز (Focus Room)</span>
+            <button class="btn btn-sm btn-lavender" onclick="toggleFocusFullscreen()">🖥️ وضع ملء الشاشة</button>
+          </div>
+          <div class="focus-box" id="focusBox">
+            <div class="form-grid" style="max-width:680px;margin:0 auto 12px">
+              <div class="field">
+                <label>هدف الجلسة الحالي</label>
+                <input type="text" id="focusGoalInput" placeholder="مثال: إنهاء درس النسبة والتناسب" oninput="document.getElementById('focusGoalDisplay').textContent = this.value || 'ركزي على خطوة واحدة في كل مرة'" />
+              </div>
+              <div class="field">
+                <label>مدة التركيز (دقائق)</label>
+                <input type="number" id="focusMinutesInput" min="1" max="180" value="45" onchange="setFocusTimerMinutes(this.value)" />
+              </div>
+            </div>
+            <div id="focusGoalDisplay" style="font-weight:700;color:var(--lavender-accent)">ركزي على خطوة واحدة في كل مرة</div>
+            <div class="focus-timer" id="focusTimerDisplay">45:00</div>
+            <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:14px">
+              <button class="btn btn-primary" onclick="startFocusTimer()">▶ بدء التركيز</button>
+              <button class="btn" onclick="pauseFocusTimer()">⏸ إيقاف مؤقت</button>
+              <button class="btn" onclick="setBreakTimer(10)">☕ استراحة 10 دقائق</button>
+              <button class="btn" onclick="resetFocusTimer()">↺ إعادة ضبط</button>
+              <button class="btn btn-lavender" id="rainBtn" onclick="toggleRainSound()">🌧️ صوت مطر هادئ: مغلق</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 9. FUTURE & UNIVERSITIES -->
+      <section id="sec-future" class="section-view">
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">🎓 الجامعات والتخصصات وقائمة الرغبات (Future)</span>
+          </div>
+          <div class="form-grid">
+            <div class="field">
+              <label>اسم الجامعة</label>
+              <input type="text" id="uniName" placeholder="مثال: جامعة الطائف / جامعة الأميرة نورة / أم القرى" />
+            </div>
+            <div class="field">
+              <label>المدينة</label>
+              <input type="text" id="uniCity" placeholder="الرياض / الطائف / مكة..." />
+            </div>
+            <div class="field">
+              <label>التخصصات المتاحة</label>
+              <input type="text" id="uniMajors" placeholder="تخصصات صحية، حاسب، هندسة..." />
+            </div>
+            <div class="field">
+              <label>النسب والشروط المطلوبة</label>
+              <input type="text" id="uniReq" placeholder="موزونة / قدرات / تحصيلي..." />
+            </div>
+            <div class="field">
+              <label>رابط التقديم</label>
+              <input type="text" id="uniLink" placeholder="https://..." />
+            </div>
+            <div class="field">
+              <label>ملاحظاتك</label>
+              <input type="text" id="uniNotes" placeholder="أولوية / سكن / شروط إضافية..." />
+            </div>
+          </div>
+          <button class="btn btn-primary" onclick="addUniversity()">+ إضافة جامعة</button>
+
+          <div style="overflow-x:auto;margin-top:16px">
+            <table>
+              <thead>
+                <tr>
+                  <th>الجامعة</th>
+                  <th>المدينة</th>
+                  <th>التخصصات</th>
+                  <th>النسب والشروط</th>
+                  <th>الرابط</th>
+                  <th>ملاحظات</th>
+                  <th>حذف</th>
+                </tr>
+              </thead>
+              <tbody id="uniTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">📌 قائمة الرغبات حسب الأولوية</span>
+          </div>
+          <div class="form-grid">
+            <div class="field">
+              <label>الرغبة / التخصص</label>
+              <input type="text" id="wishTitle" placeholder="مثال: تخصص صحي / بديل أول..." />
+            </div>
+            <div class="field">
+              <label>الأولوية</label>
+              <select id="wishPriority">
+                <option value="رغبة أولى">رغبة أولى</option>
+                <option value="تخصص صحي">تخصص صحي</option>
+                <option value="خيار بديل">خيار بديل</option>
+                <option value="خيار احتياطي">خيار احتياطي</option>
+              </select>
+            </div>
+          </div>
+          <button class="btn btn-primary" onclick="addWishItem()">+ إضافة لقائمة الرغبات</button>
+          <div id="wishListContainer" style="margin-top:12px"></div>
+        </div>
+      </section>
+
+      <!-- 10. YEAR ARCHIVE -->
+      <section id="sec-archive" class="section-view">
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">🏆 أرشيف السنة (Year Archive) — إنجازات، درجات، ورسائل لنهاية السنة</span>
+          </div>
+          <div class="form-grid">
+            <div class="field">
+              <label>العنوان أو الشهر</label>
+              <input type="text" id="archTitle" placeholder="مثال: إنجاز نوفمبر / درجة اختبار..." />
+            </div>
+            <div class="field">
+              <label>النوع</label>
+              <select id="archType">
+                <option value="إنجاز">إنجاز</option>
+                <option value="درجة اختبار">درجة اختبار</option>
+                <option value="يوم فخورة فيه">يوم فخورة فيه</option>
+                <option value="رسالة لنهاية السنة">رسالة لنهاية السنة</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>صورة تذكارية (اختياري)</label>
+              <input type="file" id="archImageInput" accept="image/*" />
+            </div>
+          </div>
+          <div class="field" style="margin-bottom:10px">
+            <label>التفاصيل (وش كنت أتوقع من نفسي؟ وش حققت فعلًا؟ أو رسالتك لنفسك)</label>
+            <textarea id="archBody" placeholder="اكتبي تفاصيل إنجازك أو رسالتك لآخر السنة..."></textarea>
+          </div>
+          <button class="btn btn-primary" onclick="addArchiveEntry()">+ حفظ في أرشيف السنة</button>
+          <div id="archiveEntriesContainer" style="margin-top:16px"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Freeze Day Modal -->
+  <div id="freezeModal" style="display:none;position:fixed;inset:0;background:rgba(22,35,59,0.55);z-index:5000;align-items:center;justify-content:center;padding:16px">
+    <div class="card" style="max-width:440px;width:100%;margin:0">
+      <div class="card-header">
+        <span class="card-title">❄️ تجميد يوم مذاكرة (إجباري كتابة السبب)</span>
+        <button class="btn btn-sm" onclick="closeFreezeModal()">✕</button>
+      </div>
+      <div class="field" style="margin-bottom:10px">
+        <label>التاريخ المراد تجميده</label>
+        <input type="date" id="freezeDateInput" />
+      </div>
+      <div class="field" style="margin-bottom:14px">
+        <label>سبب التجميد (مطلوب ولن يُحفظ التجميد بدونه)</label>
+        <textarea id="freezeReasonInput" placeholder="اكتبي سبب تجميد هذا اليوم..."></textarea>
+      </div>
+      <button class="btn btn-primary" onclick="confirmFreezeDay()">تأكيد تجميد اليوم</button>
+    </div>
+  </div>
+
+  <script>
+    const STORAGE_KEY = 'RITAL_SENIOR_YEAR_DB_V1';
+
+    const DEFAULT_EVENTS = [
+      { id: 'ev1', title: 'إجازة الخريف', start: '2026-11-19', end: '2026-11-28', type: 'holiday' },
+      { id: 'ev2', title: 'اختبارات نهائية الفصل الأول', start: '2027-01-03', end: '2027-01-07', type: 'exam' },
+      { id: 'ev3', title: 'نهاية الترم الأول', start: '2027-01-07', end: '2027-01-07', type: 'exam' },
+      { id: 'ev4', title: 'بداية مذاكرة التحصيلي', start: '2027-01-09', end: '2027-01-09', type: 'tahseeli' },
+      { id: 'ev5', title: 'العودة للدراسة — الترم الثاني', start: '2027-01-17', end: '2027-01-17', type: 'custom' },
+      { id: 'ev6', title: 'بداية رمضان', start: '2027-02-08', end: '2027-02-08', type: 'holiday' },
+      { id: 'ev7', title: 'إجازة يوم التأسيس', start: '2027-02-21', end: '2027-02-22', type: 'holiday' },
+      { id: 'ev8', title: 'إجازة عيد الفطر', start: '2027-02-26', end: '2027-03-13', type: 'holiday' },
+      { id: 'ev9', title: 'عيد الفطر', start: '2027-03-09', end: '2027-03-09', type: 'holiday' },
+      { id: 'ev10', title: 'إجازة عيد الأضحى', start: '2027-03-30', end: '2027-05-22', type: 'holiday' },
+      { id: 'ev11', title: 'موعد التسجيل للتحصيلي', start: '2027-04-14', end: '2027-04-14', type: 'tahseeli' },
+      { id: 'ev12', title: 'تسجيل التحصيلي — الفترة الأولى', start: '2027-05-27', end: '2027-05-27', type: 'tahseeli' },
+      { id: 'ev13', title: 'تسجيل التحصيلي — الفترة الثانية', start: '2027-06-04', end: '2027-06-04', type: 'tahseeli' },
+      { id: 'ev14', title: 'اختبارات نهائية الفصل الثاني', start: '2027-06-27', end: '2027-07-01', type: 'exam' },
+      { id: 'ev15', title: 'نهاية السنة وآخر يوم بالثانوي', start: '2027-07-01', end: '2027-07-01', type: 'exam' }
+    ];
+
+    const QUOTES = [
+      'السنة الأخيرة، والنسخة اللي أعمل عليها من نفسي ✨',
+      'خطوة ثابتة كل يوم تصنع فرقًا كبيرًا في نهاية السنة.',
+      'فهم الخطأ الآن يوفر عليكِ الكثير في يوم الاختبار.',
+      'One year. Countless possibilities.'
+    ];
+
+    function getDefaultState() {
+      return {
+        foundationDays: 30,
+        foundationCompleted: false,
+        frozenDays: [], // { date, reason }
+        quoteIndex: 0,
+        lastCheckin: null,
+        qudrat: {
+          quant: [
+            { id: 'q1', name: 'العمليات الحسابية والأسس', category: 'التأسيس', status: 'أدرس حاليًا', mastery: 'يحتاج مراجعة' },
+            { id: 'q2', name: 'النسبة والتناسب', category: 'التأسيس', status: 'لم أبدأ', mastery: 'ضعيف' }
+          ],
+          verbal: [
+            { id: 'v1', name: 'التناظر اللفظي — أساسيات العلاقات', category: 'التناظر اللفظي', status: 'لم أبدأ', mastery: 'يحتاج مراجعة' },
+            { id: 'v2', name: 'إكمال الجمل — مفاتيح السياق', category: 'إكمال الجمل', status: 'لم أبدأ', mastery: 'يحتاج مراجعة' }
+          ],
+          golden: [],
+          savedQ: []
+        },
+        tahseeli: {
+          biology: { lessons: [], notes: '', laws: '', memorize: '', questions: '', reviews: '', hardLessons: '' },
+          chemistry: { lessons: [], notes: '', laws: '', memorize: '', questions: '', reviews: '', hardLessons: '' },
+          physics: { lessons: [], notes: '', laws: '', memorize: '', questions: '', reviews: '', hardLessons: '' },
+          math: { lessons: [], notes: '', laws: '', memorize: '', questions: '', reviews: '', hardLessons: '' }
+        },
+        tasks: [
+          { id: 't1', title: 'إتمام درس التأسيس اليومي (قدرات)', day: 'الأحد', stage: 'تأسيس', done: false },
+          { id: 't2', title: 'حل 40 سؤال كمي + 15 قسم لفظي', day: 'الأحد', stage: 'تدريب', done: false },
+          { id: 't3', title: 'مراجعة خفيفة لملخصات الأسبوع', day: 'السبت', stage: 'مراجعة', done: false }
+        ],
+        sessions: [],
+        events: DEFAULT_EVENTS,
+        errors: [],
+        brainNotes: [],
+        vaultFiles: [],
+        universities: [
+          { id: 'u1', name: 'جامعة الطائف', city: 'الطائف', majors: 'تخصصات صحية، حاسب، هندسة...', req: 'بحسب إعلان القبول', link: '', notes: '' },
+          { id: 'u2', name: 'جامعة أم القرى', city: 'مكة المكرمة', majors: 'تخصصات متعددة', req: 'بحسب إعلان القبول', link: '', notes: '' },
+          { id: 'u3', name: 'جامعة الأميرة نورة', city: 'الرياض', majors: 'تخصصات صحية وحاسبية', req: 'بحسب إعلان القبول', link: '', notes: '' }
+        ],
+        wishes: [],
+        archive: []
+      };
+    }
+
+    let state = loadState();
+    let currentTahseeliSubject = 'biology';
+    let calYear = 2026;
+    let calMonth = 10; // November (0-indexed: 10)
+    let reviewOnlyFilter = false;
+
+    function loadState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return getDefaultState();
+        const parsed = JSON.parse(raw);
+        return { ...getDefaultState(), ...parsed };
+      } catch {
+        return getDefaultState();
+      }
+    }
+
+    function saveState() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      renderAll();
+    }
+
+    function switchSection(secId) {
+      document.querySelectorAll('.nav-btn').forEach(b => b.classList.toggle('active', b.dataset.section === secId));
+      document.querySelectorAll('.section-view').forEach(s => s.classList.remove('active'));
+      const target = document.getElementById('sec-' + secId);
+      if (target) target.classList.add('active');
+      if (secId === 'whiteboard') initWhiteboard();
+    }
+
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+      btn.addEventListener('click', () => switchSection(btn.dataset.section));
+    });
+
+    function daysBetween(targetDateStr) {
+      const now = new Date();
+      const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      const [y, m, d] = targetDateStr.split('-').map(Number);
+      const target = new Date(y, m - 1, d);
+      return Math.round((target - today) / (1000 * 60 * 60 * 24));
+    }
+
+    function getArabicDayName(dateObj = new Date()) {
+      const names = ['الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'];
+      return names[dateObj.getDay()];
+    }
+
+    function getGoalByDayName(dayName) {
+      if (dayName === 'الخميس' || dayName === 'الجمعة') {
+        return 'هدف اليوم: 80 سؤال كمي + 20 قسم لفظي';
+      }
+      if (dayName === 'السبت') {
+        return 'هدف اليوم: مراجعة فقط أو شيء خفيف';
+      }
+      return 'هدف اليوم: 40 سؤال كمي + 15 قسم لفظي';
+    }
+
+    function nextQuote() {
+      state.quoteIndex = (state.quoteIndex + 1) % QUOTES.length;
+      saveState();
+    }
+
+    function renderDashboard() {
+      const now = new Date();
+      const dayName = getArabicDayName(now);
+      const dateStr = now.toLocaleDateString('ar-SA', { year: 'numeric', month: 'long', day: 'numeric' });
+      document.getElementById('todayInfo').textContent = `اليوم: ${dayName} — ${dateStr} (ميلادي: ${now.toISOString().slice(0, 10)})`;
+      document.getElementById('dailyQuote').textContent = QUOTES[state.quoteIndex % QUOTES.length];
+
+      const endYearDiff = daysBetween('2027-07-01');
+      const tahseeliDiff = daysBetween('2027-01-09');
+      document.getElementById('cdEndYear').textContent = `${endYearDiff} يوم`;
+      document.getElementById('cdTahseeliStart').textContent = `${tahseeliDiff} يوم`;
+
+      const totalQudratDays = Number(state.foundationDays || 30) + state.frozenDays.length;
+      const estDate = new Date(now.getFullYear(), now.getMonth(), now.getDate() + totalQudratDays);
+      const estIso = estDate.toISOString().slice(0, 10);
+      document.getElementById('cdQudratEst').textContent = `${totalQudratDays} يوم`;
+      document.getElementById('qudratEstDateLabel').textContent = `التأسيس: ${state.foundationDays} يوم | المتوقع: ${estIso}`;
+
+      // Week study hours
+      const totalMinutes = state.sessions.reduce((acc, s) => acc + Number(s.duration || 0), 0);
+      document.getElementById('weekStudyHours').textContent = `${(totalMinutes / 60).toFixed(1)} س`;
+      const uniqueDays = new Set(state.sessions.map(s => s.date));
+      document.getElementById('weekCommitmentLabel').textContent = `أيام الالتزام: ${uniqueDays.size}`;
+
+      // Progress calculations
+      const allQ = [...state.qudrat.quant, ...state.qudrat.verbal];
+      const doneQ = allQ.filter(x => x.status === 'أتقنته').length;
+      const qPct = allQ.length ? Math.round((doneQ / allQ.length) * 100) : 0;
+      document.getElementById('qudratProgressText').textContent = `${qPct}%`;
+      document.getElementById('qudratProgressBar').style.width = `${qPct}%`;
+
+      const tPct = calculateTahseeliOverallPercent();
+      document.getElementById('tahseeliProgressText').textContent = `${tPct}%`;
+      document.getElementById('tahseeliProgressBar').style.width = `${tPct}%`;
+      document.getElementById('tahseeliOverallBadge').textContent = `الإنجاز: ${tPct}%`;
+
+      document.getElementById('todayGoalBadge').textContent = dayName;
+      document.getElementById('todayGoalRuleText').textContent = getGoalByDayName(dayName);
+      document.getElementById('frozenDaysInfo').textContent = `الأيام المجمدة: ${state.frozenDays.length}`;
+
+      // Today tasks
+      const todayTasks = state.tasks.filter(t => t.day === dayName);
+      const tContainer = document.getElementById('dashboardTodayTasks');
+      if (!todayTasks.length) {
+        tContainer.innerHTML = `<p style="font-size:0.86rem;color:var(--text-muted)">لا توجد مهام مسجلة ليوم ${dayName} حاليًا.</p>`;
+      } else {
+        tContainer.innerHTML = todayTasks.map(t => `
+          <div class="task-item ${t.done ? 'done' : ''}">
+            <div>
+              <input type="checkbox" ${t.done ? 'checked' : ''} onchange="toggleTaskDone('${t.id}')" />
+              <span class="task-title" style="font-weight:700;margin-right:6px">${escapeHtml(t.title)}</span>
+              <span class="badge badge-custom">${escapeHtml(t.stage)}</span>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      if (state.lastCheckin) {
+        document.getElementById('latestCheckinView').innerHTML = `آخر تسجيل (${state.lastCheckin.date}): <strong>${escapeHtml(state.lastCheckin.mood)}</strong> — ${escapeHtml(state.lastCheckin.note || '')}`;
+      }
+    }
+
+    function saveDailyCheckin() {
+      const mood = document.getElementById('checkinMood').value;
+      const note = document.getElementById('checkinNote').value.trim();
+      state.lastCheckin = {
+        date: new Date().toISOString().slice(0, 10),
+        mood,
+        note
+      };
+      document.getElementById('checkinNote').value = '';
+      saveState();
+    }
+
+    // Freeze Day (mandatory reason)
+    function openFreezeModal() {
+      document.getElementById('freezeDateInput').value = new Date().toISOString().slice(0, 10);
+      document.getElementById('freezeReasonInput').value = '';
+      document.getElementById('freezeModal').style.display = 'flex';
+    }
+
+    function closeFreezeModal() {
+      document.getElementById('freezeModal').style.display = 'none';
+    }
+
+    function confirmFreezeDay() {
+      const dateVal = document.getElementById('freezeDateInput').value;
+      const reasonVal = document.getElementById('freezeReasonInput').value.trim();
+      if (!dateVal || !reasonVal) {
+        alert('لا يمكن تجميد أي يوم مذاكرة بدون كتابة السبب.');
+        return;
+      }
+      state.frozenDays.push({ date: dateVal, reason: reasonVal });
+      closeFreezeModal();
+      saveState();
+    }
+
+    // Qudrat
+    function updateFoundationDays(val) {
+      const n = parseInt(val, 10);
+      if (!isNaN(n) && n > 0) {
+        state.foundationDays = n;
+        saveState();
+      }
+    }
+
+    function updateFoundationStatus(val) {
+      state.foundationCompleted = val === 'true';
+      saveState();
+    }
+
+    function switchQudratTab(tabName, btnEl) {
+      ['quant', 'verbal', 'golden', 'savedQ'].forEach(t => {
+        document.getElementById('qtab-' + t).style.display = t === tabName ? 'block' : 'none';
+      });
+      btnEl.parentElement.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btnEl.classList.add('active');
+    }
+
+    function addQudratLesson(track) {
+      const isQuant = track === 'quant';
+      const name = document.getElementById(isQuant ? 'qLessonName' : 'vLessonName').value.trim();
+      const category = document.getElementById(isQuant ? 'qLessonCategory' : 'vLessonCategory').value;
+      const status = document.getElementById(isQuant ? 'qLessonStatus' : 'vLessonStatus').value;
+      const mastery = document.getElementById(isQuant ? 'qLessonMastery' : 'vLessonMastery').value;
+      if (!name) return alert('اكتبي اسم الدرس أولاً');
+      state.qudrat[track].push({ id: Date.now().toString(), name, category, status, mastery });
+      document.getElementById(isQuant ? 'qLessonName' : 'vLessonName').value = '';
+      saveState();
+    }
+
+    function updateQudratItem(track, id, field, value) {
+      const item = state.qudrat[track].find(x => x.id === id);
+      if (item) {
+        item[field] = value;
+        saveState();
+      }
+    }
+
+    function deleteQudratItem(track, id) {
+      state.qudrat[track] = state.qudrat[track].filter(x => x.id !== id);
+      saveState();
+    }
+
+    function renderQudrat() {
+      document.getElementById('foundationDaysInput').value = state.foundationDays;
+      document.getElementById('foundationCompletedSelect').value = String(state.foundationCompleted);
+
+      const renderRows = (track, tbodyId) => {
+        const tbody = document.getElementById(tbodyId);
+        tbody.innerHTML = state.qudrat[track].map(item => `
+          <tr>
+            <td><strong>${escapeHtml(item.name)}</strong></td>
+            <td>${escapeHtml(item.category)}</td>
+            <td>
+              <select onchange="updateQudratItem('${track}','${item.id}','status',this.value)">
+                ${['لم أبدأ', 'أدرس حاليًا', 'يحتاج مراجعة', 'أتقنته'].map(st =>
+                  `<option value="${st}" ${item.status === st ? 'selected' : ''}>${st}</option>`
+                ).join('')}
+              </select>
+            </td>
+            <td>
+              <select onchange="updateQudratItem('${track}','${item.id}','mastery',this.value)">
+                ${['متقن', 'يحتاج مراجعة', 'ضعيف'].map(ms =>
+                  `<option value="${ms}" ${item.mastery === ms ? 'selected' : ''}>${ms}</option>`
+                ).join('')}
+              </select>
+            </td>
+            <td><button class="btn btn-danger btn-sm" onclick="deleteQudratItem('${track}','${item.id}')">حذف</button></td>
+          </tr>
+        `).join('') || `<tr><td colspan="5" style="text-align:center;color:var(--text-muted)">لا توجد دروس مضافة بعد</td></tr>`;
+      };
+
+      renderRows('quant', 'quantLessonsBody');
+      renderRows('verbal', 'verbalLessonsBody');
+
+      document.getElementById('goldenList').innerHTML = state.qudrat.golden.map(g => `
+        <div class="task-item">
+          <div>
+            <strong>${escapeHtml(g.title)}</strong> <span class="badge badge-qudrat">${escapeHtml(g.track)}</span>
+            <p style="font-size:0.85rem;margin-top:4px">${escapeHtml(g.desc)}</p>
+          </div>
+          <button class="btn btn-danger btn-sm" onclick="deleteGoldenIdea('${g.id}')">حذف</button>
+        </div>
+      `).join('') || `<p style="font-size:0.85rem;color:var(--text-muted)">لم تُضف أفكار مسائل ذهبية بعد.</p>`;
+
+      document.getElementById('savedQList').innerHTML = state.qudrat.savedQ.map(q => `
+        <div class="task-item">
+          <div>
+            <strong>${escapeHtml(q.title)}</strong> <span class="badge badge-custom">${escapeHtml(q.section)}</span>
+            <p style="font-size:0.85rem;margin-top:4px">${escapeHtml(q.note)}</p>
+          </div>
+          <button class="btn btn-danger btn-sm" onclick="deleteSavedQuestion('${q.id}')">حذف</button>
+        </div>
+      `).join('') || `<p style="font-size:0.85rem;color:var(--text-muted)">لا توجد أسئلة محفوظة حاليًا.</p>`;
+    }
+
+    function addGoldenIdea() {
+      const title = document.getElementById('goldenTitle').value.trim();
+      const track = document.getElementById('goldenTrack').value;
+      const desc = document.getElementById('goldenDesc').value.trim();
+      if (!title || !desc) return alert('أدخلي عنوان الفكرة وشرحها');
+      state.qudrat.golden.push({ id: Date.now().toString(), title, track, desc });
+      document.getElementById('goldenTitle').value = '';
+      document.getElementById('goldenDesc').value = '';
+      saveState();
+    }
+
+    function deleteGoldenIdea(id) {
+      state.qudrat.golden = state.qudrat.golden.filter(x => x.id !== id);
+      saveState();
+    }
+
+    function addSavedQuestion() {
+      const title = document.getElementById('savedQTitle').value.trim();
+      const section = document.getElementById('savedQSection').value.trim() || 'عام';
+      const note = document.getElementById('savedQNote').value.trim();
+      if (!title) return alert('أدخلي عنوان السؤال');
+      state.qudrat.savedQ.push({ id: Date.now().toString(), title, section, note });
+      document.getElementById('savedQTitle').value = '';
+      document.getElementById('savedQNote').value = '';
+      saveState();
+    }
+
+    function deleteSavedQuestion(id) {
+      state.qudrat.savedQ = state.qudrat.savedQ.filter(x => x.id !== id);
+      saveState();
+    }
+
+    // Tahseeli
+    function selectTahseeliSubject(subj, btnEl) {
+      currentTahseeliSubject = subj;
+      document.querySelectorAll('#tahseeliSubjectTabs .tab-btn').forEach(b => b.classList.remove('active'));
+      if (btnEl) btnEl.classList.add('active');
+      renderTahseeli();
+    }
+
+    function calculateTahseeliOverallPercent() {
+      const subjects = Object.values(state.tahseeli);
+      let totalLessons = 0;
+      let masteredLessons = 0;
+      subjects.forEach(s => {
+        totalLessons += s.lessons.length;
+        masteredLessons += s.lessons.filter(l => l.status === 'أتقنته' || l.mastery === 'متقن').length;
+      });
+      return totalLessons ? Math.round((masteredLessons / totalLessons) * 100) : 0;
+    }
+
+    function addTahseeliLesson() {
+      const title = document.getElementById('tLessonTitle').value.trim();
+      const chapter = document.getElementById('tLessonChapter').value.trim() || 'باب عام';
+      const status = document.getElementById('tLessonStatus').value;
+      const mastery = document.getElementById('tLessonMastery').value;
+      if (!title) return alert('اكتبي اسم الدرس');
+      state.tahseeli[currentTahseeliSubject].lessons.push({
+        id: Date.now().toString(), title, chapter, status, mastery
+      });
+      document.getElementById('tLessonTitle').value = '';
+      saveState();
+    }
+
+    function updateTahseeliLesson(id, field, val) {
+      const lesson = state.tahseeli[currentTahseeliSubject].lessons.find(l => l.id === id);
+      if (lesson) {
+        lesson[field] = val;
+        saveState();
+      }
+    }
+
+    function deleteTahseeliLesson(id) {
+      state.tahseeli[currentTahseeliSubject].lessons = state.tahseeli[currentTahseeliSubject].lessons.filter(l => l.id !== id);
+      saveState();
+    }
+
+    function saveTahseeliField(field, val) {
+      state.tahseeli[currentTahseeliSubject][field] = val;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    }
+
+    function renderTahseeli() {
+      const subjData = state.tahseeli[currentTahseeliSubject];
+      const total = subjData.lessons.length;
+      const done = subjData.lessons.filter(l => l.status === 'أتقنته' || l.mastery === 'متقن').length;
+      const pct = total ? Math.round((done / total) * 100) : 0;
+
+      document.getElementById('tahseeliSubjectContent').innerHTML = `
+        <div style="margin-bottom:14px">
+          <div style="display:flex;justify-content:space-between;font-size:0.88rem;font-weight:700">
+            <span>نسبة إنجاز المادة</span>
+            <span>${pct}% (${done}/${total} دروس)</span>
+          </div>
+          <div class="progress-wrap"><div class="progress-bar" style="width:${pct}%"></div></div>
+        </div>
+
+        <div class="form-grid">
+          <div class="field">
+            <label>الباب / الوحدة</label>
+            <input type="text" id="tLessonChapter" placeholder="مثال: الباب الأول" />
+          </div>
+          <div class="field">
+            <label>اسم الدرس</label>
+            <input type="text" id="tLessonTitle" placeholder="أضيفي درسًا جديدًا..." />
+          </div>
+          <div class="field">
+            <label>حالة الدرس</label>
+            <select id="tLessonStatus">
+              <option value="لم أبدأ">لم أبدأ</option>
+              <option value="أدرس حاليًا">أدرس حاليًا</option>
+              <option value="يحتاج مراجعة">يحتاج مراجعة</option>
+              <option value="أتقنته">أتقنته</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>مستوى الإتقان</label>
+            <select id="tLessonMastery">
+              <option value="ضعيف">ضعيف</option>
+              <option value="يحتاج مراجعة">يحتاج مراجعة</option>
+              <option value="متقن">متقن</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn btn-primary" onclick="addTahseeliLesson()">+ إضافة درس للمادة</button>
+
+        <div style="overflow-x:auto;margin-top:14px;margin-bottom:18px">
+          <table>
+            <thead>
+              <tr>
+                <th>الباب</th>
+                <th>الدرس</th>
+                <th>الحالة</th>
+                <th>مستوى الإتقان</th>
+                <th>حذف</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${subjData.lessons.map(l => `
+                <tr>
+                  <td>${escapeHtml(l.chapter)}</td>
+                  <td><strong>${escapeHtml(l.title)}</strong></td>
+                  <td>
+                    <select onchange="updateTahseeliLesson('${l.id}','status',this.value)">
+                      ${['لم أبدأ', 'أدرس حاليًا', 'يحتاج مراجعة', 'أتقنته'].map(st =>
+                        `<option value="${st}" ${l.status === st ? 'selected' : ''}>${st}</option>`
+                      ).join('')}
+                    </select>
+                  </td>
+                  <td>
+                    <select onchange="updateTahseeliLesson('${l.id}','mastery',this.value)">
+                      ${['متقن', 'يحتاج مراجعة', 'ضعيف'].map(ms =>
+                        `<option value="${ms}" ${l.mastery === ms ? 'selected' : ''}>${ms}</option>`
+                      ).join('')}
+                    </select>
+                  </td>
+                  <td><button class="btn btn-danger btn-sm" onclick="deleteTahseeliLesson('${l.id}')">حذف</button></td>
+                </tr>
+              `).join('') || `<tr><td colspan="5" style="text-align:center;color:var(--text-muted)">لم تُضف دروس لهذه المادة بعد — ابدئي بإضافة دروسك متى شئتِ</td></tr>`}
+            </tbody>
+          </table>
+        </div>
+
+        <div class="grid-2">
+          <div class="field">
+            <label>ملخصاتي</label>
+            <textarea oninput="saveTahseeliField('notes', this.value)">${escapeHtml(subjData.notes)}</textarea>
+          </div>
+          <div class="field">
+            <label>القوانين</label>
+            <textarea oninput="saveTahseeliField('laws', this.value)">${escapeHtml(subjData.laws)}</textarea>
+          </div>
+          <div class="field">
+            <label>المعلومات التي تحتاج حفظ</label>
+            <textarea oninput="saveTahseeliField('memorize', this.value)">${escapeHtml(subjData.memorize)}</textarea>
+          </div>
+          <div class="field">
+            <label>أسئلة الدرس ومراجعاتي والدروس الصعبة</label>
+            <textarea oninput="saveTahseeliField('reviews', this.value)">${escapeHtml(subjData.reviews)}</textarea>
+          </div>
+        </div>
+      `;
+    }
+
+    // Planner & Study Tracker
+    function addPlannerTask() {
+      const title = document.getElementById('taskTitleInput').value.trim();
+      const day = document.getElementById('taskDayInput').value;
+      const stage = document.getElementById('taskStageInput').value;
+      if (!title) return alert('اكتبي عنوان المهمة');
+      state.tasks.push({ id: Date.now().toString(), title, day, stage, done: false });
+      document.getElementById('taskTitleInput').value = '';
+      saveState();
+    }
+
+    function toggleTaskDone(id) {
+      const t = state.tasks.find(x => x.id === id);
+      if (t) {
+        t.done = !t.done;
+        saveState();
+      }
+    }
+
+    function advanceTaskToToday(id) {
+      const todayName = getArabicDayName(new Date());
+      const t = state.tasks.find(x => x.id === id);
+      if (t) {
+        t.day = todayName;
+        saveState();
+      }
+    }
+
+    function deleteTask(id) {
+      state.tasks = state.tasks.filter(x => x.id !== id);
+      saveState();
+    }
+
+    function renderPlanner() {
+      const todayName = getArabicDayName(new Date());
+      const container = document.getElementById('plannerTasksList');
+      container.innerHTML = state.tasks.map(t => `
+        <div class="task-item ${t.done ? 'done' : ''}">
+          <div>
+            <input type="checkbox" ${t.done ? 'checked' : ''} onchange="toggleTaskDone('${t.id}')" />
+            <span class="task-title" style="font-weight:700;margin-right:6px">${escapeHtml(t.title)}</span>
+            <span class="badge badge-qudrat">${escapeHtml(t.day)}</span>
+            <span class="badge badge-custom">${escapeHtml(t.stage)}</span>
+          </div>
+          <div style="display:flex;gap:6px">
+            ${t.day !== todayName ? `<button class="btn btn-lavender btn-sm" onclick="advanceTaskToToday('${t.id}')">تقديم لليوم (${todayName})</button>` : ''}
+            <button class="btn btn-danger btn-sm" onclick="deleteTask('${t.id}')">حذف</button>
+          </div>
+        </div>
+      `).join('');
+
+      const totalMin = state.sessions.reduce((s, x) => s + Number(x.duration || 0), 0);
+      const totalQ = state.sessions.reduce((s, x) => s + Number(x.questions || 0), 0);
+      const uniqueDays = new Set(state.sessions.map(x => x.date)).size;
+
+      const bySubj = {};
+      state.sessions.forEach(s => {
+        bySubj[s.subject] = (bySubj[s.subject] || 0) + Number(s.duration || 0);
+      });
+      let topSubj = '--';
+      let maxMin = 0;
+      Object.entries(bySubj).forEach(([k, v]) => {
+        if (v > maxMin) { maxMin = v; topSubj = k; }
+      });
+
+      document.getElementById('totalStudyHoursStat').textContent = `${(totalMin / 60).toFixed(1)} س`;
+      document.getElementById('totalQuestionsStat').textContent = String(totalQ);
+      document.getElementById('commitmentDaysStat').textContent = String(uniqueDays);
+      document.getElementById('topSubjectStat').textContent = topSubj;
+
+      document.getElementById('sessionsTableBody').innerHTML = state.sessions.map(s => `
+        <tr>
+          <td>${escapeHtml(s.date)}</td>
+          <td>${escapeHtml(s.subject)}</td>
+          <td>${escapeHtml(s.section)}</td>
+          <td>${escapeHtml(s.lesson)}</td>
+          <td>${escapeHtml(String(s.duration))} د</td>
+          <td>${escapeHtml(String(s.correct))} / ${escapeHtml(String(s.questions))}</td>
+          <td>${escapeHtml(s.focus)}</td>
+          <td>${escapeHtml(s.notes)}</td>
+          <td><button class="btn btn-danger btn-sm" onclick="deleteSession('${s.id}')">حذف</button></td>
+        </tr>
+      `).join('') || `<tr><td colspan="9" style="text-align:center;color:var(--text-muted)">لم تُسجل جلسات مذاكرة بعد</td></tr>`;
+    }
+
+    function addStudySession() {
+      const subject = document.getElementById('sessSubject').value;
+      const section = document.getElementById('sessSection').value.trim() || 'عام';
+      const lesson = document.getElementById('sessLesson').value.trim() || 'جلسة مذاكرة';
+      const duration = Number(document.getElementById('sessDuration').value || 0);
+      const questions = Number(document.getElementById('sessQuestions').value || 0);
+      const correct = Number(document.getElementById('sessCorrect').value || 0);
+      const focus = document.getElementById('sessFocus').value;
+      const notes = document.getElementById('sessNotes').value.trim();
+
+      state.sessions.unshift({
+        id: Date.now().toString(),
+        date: new Date().toISOString().slice(0, 10),
+        subject, section, lesson, duration, questions, correct, focus, notes
+      });
+      document.getElementById('sessLesson').value = '';
+      document.getElementById('sessNotes').value = '';
+      saveState();
+    }
+
+    function deleteSession(id) {
+      state.sessions = state.sessions.filter(x => x.id !== id);
+      saveState();
+    }
+
+    // Calendar & Events
+    function changeCalMonth(delta) {
+      calMonth += delta;
+      if (calMonth < 0) { calMonth = 11; calYear--; }
+      if (calMonth > 11) { calMonth = 0; calYear++; }
+      renderCalendar();
+    }
+
+    function getEventBadgeClass(type) {
+      if (type === 'tahseeli') return 'badge-tahseeli';
+      if (type === 'holiday') return 'badge-holiday';
+      if (type === 'exam') return 'badge-exam';
+      return 'badge-custom';
+    }
+
+    function renderCalendar() {
+      const monthNames = ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'];
+      document.getElementById('calMonthLabel').textContent = `${monthNames[calMonth]} ${calYear}`;
+
+      const grid = document.getElementById('calendarGrid');
+      const dayHeads = ['الأحد', 'الاثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'];
+      let html = dayHeads.map(d => `<div class="cal-day-head">${d}</div>`).join('');
+
+      const firstDay = new Date(calYear, calMonth, 1).getDay();
+      const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
+      const todayIso = new Date().toISOString().slice(0, 10);
+
+      for (let i = 0; i < firstDay; i++) {
+        html += `<div class="cal-cell other-month"></div>`;
+      }
+
+      for (let d = 1; d <= daysInMonth; d++) {
+        const mStr = String(calMonth + 1).padStart(2, '0');
+        const dStr = String(d).padStart(2, '0');
+        const cellIso = `${calYear}-${mStr}-${dStr}`;
+        const matchingEvents = state.events.filter(ev => {
+          const endD = ev.end || ev.start;
+          return cellIso >= ev.start && cellIso <= endD;
+        });
+
+        html += `
+          <div class="cal-cell ${cellIso === todayIso ? 'today' : ''}" onclick="prefillEventDate('${cellIso}')">
+            <div class="cal-num">${d}</div>
+            ${matchingEvents.map(ev => `<div class="cal-event-dot ${getEventBadgeClass(ev.type)}">${escapeHtml(ev.title)}</div>`).join('')}
+          </div>
+        `;
+      }
+
+      grid.innerHTML = html;
+
+      document.getElementById('eventsTableBody').innerHTML = state.events.map(ev => `
+        <tr>
+          <td><strong>${escapeHtml(ev.title)}</strong></td>
+          <td>${escapeHtml(ev.start)}</td>
+          <td>${escapeHtml(ev.end || ev.start)}</td>
+          <td><span class="badge ${getEventBadgeClass(ev.type)}">${escapeHtml(ev.type)}</span></td>
+          <td><button class="btn btn-danger btn-sm" onclick="deleteCalendarEvent('${ev.id}')">حذف</button></td>
+        </tr>
+      `).join('');
+    }
+
+    function prefillEventDate(iso) {
+      document.getElementById('evStart').value = iso;
+    }
+
+    function addCalendarEvent() {
+      const title = document.getElementById('evTitle').value.trim();
+      const start = document.getElementById('evStart').value;
+      const end = document.getElementById('evEnd').value || start;
+      const type = document.getElementById('evType').value;
+      if (!title || !start) return alert('أدخلي عنوان الموعد وتاريخه');
+      state.events.push({ id: 'ev_' + Date.now(), title, start, end, type });
+      document.getElementById('evTitle').value = '';
+      saveState();
+    }
+
+    function deleteCalendarEvent(id) {
+      state.events = state.events.filter(x => x.id !== id);
+      saveState();
+    }
+
+    // Errors, Notes, Files
+    function toggleReviewOnly() {
+      reviewOnlyFilter = !reviewOnlyFilter;
+      renderVault();
+    }
+
+    function addErrorRecord() {
+      const question = document.getElementById('errQuestion').value.trim();
+      const type = document.getElementById('errType').value;
+      const reason = document.getElementById('errReason').value.trim();
+      const learned = document.getElementById('errLearned').value.trim();
+      const status = document.getElementById('errStatus').value;
+      const fileInput = document.getElementById('errImageInput');
+
+      if (!question) return alert('اكتبي السؤال أو وصفه');
+
+      const finishSave = (imgData) => {
+        state.errors.unshift({
+          id: Date.now().toString(),
+          question, type, reason, learned, status, imgData
+        });
+        document.getElementById('errQuestion').value = '';
+        document.getElementById('errReason').value = '';
+        document.getElementById('errLearned').value = '';
+        fileInput.value = '';
+        saveState();
+      };
+
+      if (fileInput.files && fileInput.files[0]) {
+        const reader = new FileReader();
+        reader.onload = () => finishSave(reader.result);
+        reader.readAsDataURL(fileInput.files[0]);
+      } else {
+        finishSave(null);
+      }
+    }
+
+    function toggleErrorStatus(id) {
+      const err = state.errors.find(x => x.id === id);
+      if (err) {
+        err.status = err.status === 'يحتاج مراجعة' ? 'أتقنته' : 'يحتاج مراجعة';
+        saveState();
+      }
+    }
+
+    function deleteErrorRecord(id) {
+      state.errors = state.errors.filter(x => x.id !== id);
+      saveState();
+    }
+
+    function renderVault() {
+      const list = reviewOnlyFilter
+        ? state.errors.filter(e => e.status === 'يحتاج مراجعة')
+        : state.errors;
+
+      document.getElementById('errorsTableBody').innerHTML = list.map(e => `
+        <tr>
+          <td><strong>${escapeHtml(e.question)}</strong></td>
+          <td>${escapeHtml(e.type)}</td>
+          <td>${escapeHtml(e.reason)}</td>
+          <td>${escapeHtml(e.learned)}</td>
+          <td>${e.imgData ? `<img src="${e.imgData}" alt="صورة الخطأ" style="max-width:74px;border-radius:6px" />` : '—'}</td>
+          <td><span class="badge ${e.status === 'أتقنته' ? 'badge-tahseeli' : 'badge-exam'}">${escapeHtml(e.status)}</span></td>
+          <td style="display:flex;gap:4px">
+            <button class="btn btn-sm btn-lavender" onclick="toggleErrorStatus('${e.id}')">تبديل الحالة</button>
+            <button class="btn btn-danger btn-sm" onclick="deleteErrorRecord('${e.id}')">حذف</button>
+          </td>
+        </tr>
+      `).join('') || `<tr><td colspan="7" style="text-align:center;color:var(--text-muted)">لا توجد أخطاء مسجلة حاليًا</td></tr>`;
+
+      renderBrainNotes();
+
+      document.getElementById('vaultFilesList').innerHTML = state.vaultFiles.map(f => `
+        <div class="task-item">
+          <div>
+            <strong>${escapeHtml(f.label)}</strong> <span style="font-size:0.78rem;color:var(--text-muted)">(${escapeHtml(f.fileName)})</span>
+          </div>
+          <div style="display:flex;gap:6px">
+            <a class="btn btn-sm btn-lavender" href="${f.dataUrl}" download="${escapeHtml(f.fileName)}">تحميل</a>
+            <button class="btn btn-danger btn-sm" onclick="deleteVaultFile('${f.id}')">حذف</button>
+          </div>
+        </div>
+      `).join('') || `<p style="font-size:0.85rem;color:var(--text-muted)">لم تُرفق ملفات بعد.</p>`;
+    }
+
+    function addBrainNote() {
+      const title = document.getElementById('noteTitle').value.trim();
+      const category = document.getElementById('noteCategory').value;
+      const content = document.getElementById('noteContent').value.trim();
+      if (!title && !content) return alert('اكتبي ملاحظة أولاً');
+      state.brainNotes.unshift({ id: Date.now().toString(), title: title || 'ملاحظة', category, content });
+      document.getElementById('noteTitle').value = '';
+      document.getElementById('noteContent').value = '';
+      saveState();
+    }
+
+    function deleteBrainNote(id) {
+      state.brainNotes = state.brainNotes.filter(x => x.id !== id);
+      saveState();
+    }
+
+    function renderBrainNotes() {
+      const q = (document.getElementById('noteSearchInput')?.value || '').trim().toLowerCase();
+      const filtered = state.brainNotes.filter(n =>
+        n.title.toLowerCase().includes(q) || n.content.toLowerCase().includes(q) || n.category.toLowerCase().includes(q)
+      );
+      document.getElementById('brainNotesList').innerHTML = filtered.map(n => `
+        <div class="task-item">
+          <div>
+            <strong>${escapeHtml(n.title)}</strong> <span class="badge badge-holiday">${escapeHtml(n.category)}</span>
+            <p style="font-size:0.85rem;margin-top:4px;white-space:pre-line">${escapeHtml(n.content)}</p>
+          </div>
+          <button class="btn btn-danger btn-sm" onclick="deleteBrainNote('${n.id}')">حذف</button>
+        </div>
+      `).join('') || `<p style="font-size:0.85rem;color:var(--text-muted)">لا توجد ملاحظات مطابقة.</p>`;
+    }
+
+    function addVaultFile() {
+      const label = document.getElementById('fileLabelInput').value.trim();
+      const input = document.getElementById('vaultFileInput');
+      if (!input.files || !input.files[0]) return alert('اختاري ملفًا أولاً');
+      const file = input.files[0];
+      const reader = new FileReader();
+      reader.onload = () => {
+        state.vaultFiles.unshift({
+          id: Date.now().toString(),
+          label: label || file.name,
+          fileName: file.name,
+          dataUrl: reader.result
+        });
+        document.getElementById('fileLabelInput').value = '';
+        input.value = '';
+        saveState();
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function deleteVaultFile(id) {
+      state.vaultFiles = state.vaultFiles.filter(x => x.id !== id);
+      saveState();
+    }
+
+    // Whiteboard
+    let wbInitialized = false;
+    function initWhiteboard() {
+      if (wbInitialized) return;
+      wbInitialized = true;
+      const canvas = document.getElementById('whiteboardCanvas');
+      const ctx = canvas.getContext('2d');
+      let drawing = false;
+
+      const getPos = (e) => {
+        const rect = canvas.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        return {
+          x: ((clientX - rect.left) / rect.width) * canvas.width,
+          y: ((clientY - rect.top) / rect.height) * canvas.height
+        };
+      };
+
+      const startDraw = (e) => {
+        drawing = true;
+        const p = getPos(e);
+        ctx.beginPath();
+        ctx.moveTo(p.x, p.y);
+      };
+
+      const moveDraw = (e) => {
+        if (!drawing) return;
+        e.preventDefault();
+        const p = getPos(e);
+        ctx.strokeStyle = document.getElementById('wbColor').value;
+        ctx.lineWidth = document.getElementById('wbSize').value;
+        ctx.lineCap = 'round';
+        ctx.lineTo(p.x, p.y);
+        ctx.stroke();
+      };
+
+      const endDraw = () => {
+        drawing = false;
+      };
+
+      canvas.addEventListener('mousedown', startDraw);
+      canvas.addEventListener('mousemove', moveDraw);
+      window.addEventListener('mouseup', endDraw);
+      canvas.addEventListener('touchstart', startDraw, { passive: false });
+      canvas.addEventListener('touchmove', moveDraw, { passive: false });
+      window.addEventListener('touchend', endDraw);
+    }
+
+    function clearWhiteboard() {
+      const canvas = document.getElementById('whiteboardCanvas');
+      canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    function saveWhiteboardToArchive() {
+      const canvas = document.getElementById('whiteboardCanvas');
+      const dataUrl = canvas.toDataURL('image/png');
+      state.archive.unshift({
+        id: Date.now().toString(),
+        title: 'حل من السبورة البيضاء',
+        type: 'إنجاز',
+        body: 'تم حفظ صورة الحل مباشرة من السبورة البيضاء.',
+        imgData: dataUrl,
+        date: new Date().toISOString().slice(0, 10)
+      });
+      saveState();
+      alert('تم حفظ السبورة في أرشيف السنة!');
+    }
+
+    // Focus Room
+    let focusSeconds = 45 * 60;
+    let focusInterval = null;
+    let rainCtx = null;
+    let rainSource = null;
+
+    function updateFocusDisplay() {
+      const m = Math.floor(focusSeconds / 60);
+      const s = focusSeconds % 60;
+      document.getElementById('focusTimerDisplay').textContent = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+    }
+
+    function setFocusTimerMinutes(mins) {
+      const m = Math.max(1, Number(mins || 45));
+      pauseFocusTimer();
+      focusSeconds = m * 60;
+      updateFocusDisplay();
+    }
+
+    function setBreakTimer(mins) {
+      pauseFocusTimer();
+      focusSeconds = mins * 60;
+      updateFocusDisplay();
+    }
+
+    function startFocusTimer() {
+      if (focusInterval) return;
+      focusInterval = setInterval(() => {
+        if (focusSeconds > 0) {
+          focusSeconds--;
+          updateFocusDisplay();
+        } else {
+          pauseFocusTimer();
+          alert('انتهت جلسة التركيز! أحسنتِ 🌿');
+        }
+      }, 1000);
+    }
+
+    function pauseFocusTimer() {
+      clearInterval(focusInterval);
+      focusInterval = null;
+    }
+
+    function resetFocusTimer() {
+      pauseFocusTimer();
+      const mins = Number(document.getElementById('focusMinutesInput').value || 45);
+      focusSeconds = mins * 60;
+      updateFocusDisplay();
+    }
+
+    function toggleFocusFullscreen() {
+      const box = document.getElementById('focusBox');
+      box.classList.toggle('focus-fullscreen');
+      if (box.classList.contains('focus-fullscreen') && !document.getElementById('exitFsBtn')) {
+        const btn = document.createElement('button');
+        btn.id = 'exitFsBtn';
+        btn.className = 'btn btn-lavender';
+        btn.textContent = 'خروج من ملء الشاشة';
+        btn.onclick = toggleFocusFullscreen;
+        box.appendChild(btn);
+      } else if (!box.classList.contains('focus-fullscreen')) {
+        document.getElementById('exitFsBtn')?.remove();
+      }
+    }
+
+    function toggleRainSound() {
+      const btn = document.getElementById('rainBtn');
+      if (rainSource) {
+        rainSource.stop();
+        rainSource = null;
+        btn.textContent = '🌧️ صوت مطر هادئ: مغلق';
+        return;
+      }
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      rainCtx = rainCtx || new AudioCtx();
+      const bufferSize = 2 * rainCtx.sampleRate;
+      const noiseBuffer = rainCtx.createBuffer(1, bufferSize, rainCtx.sampleRate);
+      const output = noiseBuffer.getChannelData(0);
+      for (let i = 0; i < bufferSize; i++) {
+        output[i] = Math.random() * 2 - 1;
+      }
+      const whiteNoise = rainCtx.createBufferSource();
+      whiteNoise.buffer = noiseBuffer;
+      whiteNoise.loop = true;
+
+      const filter = rainCtx.createBiquadFilter();
+      filter.type = 'lowpass';
+      filter.frequency.value = 650;
+
+      whiteNoise.connect(filter);
+      filter.connect(rainCtx.destination);
+      whiteNoise.start(0);
+      rainSource = whiteNoise;
+      btn.textContent = '🌧️ صوت مطر هادئ: يعمل';
+    }
+
+    // Future & Universities
+    function addUniversity() {
+      const name = document.getElementById('uniName').value.trim();
+      const city = document.getElementById('uniCity').value.trim();
+      const majors = document.getElementById('uniMajors').value.trim();
+      const req = document.getElementById('uniReq').value.trim();
+      const link = document.getElementById('uniLink').value.trim();
+      const notes = document.getElementById('uniNotes').value.trim();
+      if (!name) return alert('اكتبي اسم الجامعة');
+      state.universities.push({ id: Date.now().toString(), name, city, majors, req, link, notes });
+      document.getElementById('uniName').value = '';
+      saveState();
+    }
+
+    function deleteUniversity(id) {
+      state.universities = state.universities.filter(x => x.id !== id);
+      saveState();
+    }
+
+    function addWishItem() {
+      const title = document.getElementById('wishTitle').value.trim();
+      const priority = document.getElementById('wishPriority').value;
+      if (!title) return alert('اكتبي التخصص أو الرغبة');
+      state.wishes.push({ id: Date.now().toString(), title, priority });
+      document.getElementById('wishTitle').value = '';
+      saveState();
+    }
+
+    function deleteWishItem(id) {
+      state.wishes = state.wishes.filter(x => x.id !== id);
+      saveState();
+    }
+
+    function renderFuture() {
+      document.getElementById('uniTableBody').innerHTML = state.universities.map(u => `
+        <tr>
+          <td><strong>${escapeHtml(u.name)}</strong></td>
+          <td>${escapeHtml(u.city)}</td>
+          <td>${escapeHtml(u.majors)}</td>
+          <td>${escapeHtml(u.req)}</td>
+          <td>${u.link ? `<a href="${escapeHtml(u.link)}" target="_blank" rel="noopener">رابط</a>` : '—'}</td>
+          <td>${escapeHtml(u.notes)}</td>
+          <td><button class="btn btn-danger btn-sm" onclick="deleteUniversity('${u.id}')">حذف</button></td>
+        </tr>
+      `).join('');
+
+      document.getElementById('wishListContainer').innerHTML = state.wishes.map((w, idx) => `
+        <div class="task-item">
+          <div>
+            <strong>#${idx + 1} — ${escapeHtml(w.title)}</strong>
+            <span class="badge badge-qudrat">${escapeHtml(w.priority)}</span>
+          </div>
+          <button class="btn btn-danger btn-sm" onclick="deleteWishItem('${w.id}')">حذف</button>
+        </div>
+      `).join('') || `<p style="font-size:0.85rem;color:var(--text-muted)">لم تُضف رغبات بعد.</p>`;
+    }
+
+    // Archive
+    function addArchiveEntry() {
+      const title = document.getElementById('archTitle').value.trim();
+      const type = document.getElementById('archType').value;
+      const body = document.getElementById('archBody').value.trim();
+      const fileInput = document.getElementById('archImageInput');
+      if (!title && !body) return alert('اكتبي عنوانًا أو نصًا للأرشيف');
+
+      const finish = (imgData) => {
+        state.archive.unshift({
+          id: Date.now().toString(),
+          title: title || 'إنجاز السنة',
+          type, body, imgData,
+          date: new Date().toISOString().slice(0, 10)
+        });
+        document.getElementById('archTitle').value = '';
+        document.getElementById('archBody').value = '';
+        fileInput.value = '';
+        saveState();
+      };
+
+      if (fileInput.files && fileInput.files[0]) {
+        const reader = new FileReader();
+        reader.onload = () => finish(reader.result);
+        reader.readAsDataURL(fileInput.files[0]);
+      } else {
+        finish(null);
+      }
+    }
+
+    function deleteArchiveEntry(id) {
+      state.archive = state.archive.filter(x => x.id !== id);
+      saveState();
+    }
+
+    function renderArchive() {
+      document.getElementById('archiveEntriesContainer').innerHTML = state.archive.map(item => `
+        <div class="card" style="margin-bottom:12px">
+          <div class="card-header">
+            <div>
+              <strong>${escapeHtml(item.title)}</strong>
+              <span class="badge badge-holiday">${escapeHtml(item.type)}</span>
+              <span style="font-size:0.78rem;color:var(--text-muted)">${escapeHtml(item.date)}</span>
+            </div>
+            <button class="btn btn-danger btn-sm" onclick="deleteArchiveEntry('${item.id}')">حذف</button>
+          </div>
+          <p style="font-size:0.88rem;white-space:pre-line">${escapeHtml(item.body)}</p>
+          ${item.imgData ? `<img src="${item.imgData}" alt="أرشيف" style="max-width:220px;border-radius:10px;margin-top:10px" />` : ''}
+        </div>
+      `).join('') || `<p style="font-size:0.85rem;color:var(--text-muted)">ابدئي بتوثيق ذكريات وإنجازات سنتك الأخيرة هنا ✨</p>`;
+    }
+
+    // Export / Import / Reset
+    function exportData() {
+      const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `rital-senior-year-${new Date().toISOString().slice(0, 10)}.json`;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function importData(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        try {
+          const parsed = JSON.parse(reader.result);
+          state = { ...getDefaultState(), ...parsed };
+          saveState();
+          alert('تم استيراد بياناتك بنجاح!');
+        } catch {
+          alert('تعذر قراءة ملف النسخة الاحتياطية.');
+        }
+      };
+      reader.readAsText(file);
+    }
+
+    function resetAllConfirm() {
+      if (confirm('هل أنتِ متأكدة من إعادة ضبط جميع البيانات إلى الوضع الافتراضي؟')) {
+        state = getDefaultState();
+        saveState();
+      }
+    }
+
+    function escapeHtml(str) {
+      return String(str || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function renderAll() {
+      renderDashboard();
+      renderQudrat();
+      renderTahseeli();
+      renderPlanner();
+      renderCalendar();
+      renderVault();
+      renderFuture();
+      renderArchive();
+    }
+
+    updateFocusDisplay();
+    renderAll();
+  </script>
+</body>
+</html>
